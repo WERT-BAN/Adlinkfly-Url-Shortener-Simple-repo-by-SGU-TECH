@@ -40,6 +40,52 @@ bot.onText(/\/start/, (msg) => {
   bot.sendMessage(chatId, welcomeMessage);
 });
 
+
+// Handle /help command
+bot.onText(/\/help/, (msg) => {
+  const chatId = msg.chat.id;
+  const helpMessage = `Hey there! Welcome to Shorten Links ⚡ – your go-to bot for converting and shortening links! I'm here to simplify your tasks and help you boost your earnings 💰.\n\n`
+    + `I have a ton of handy features to help you out, such as:\n\n`
+    + `/start - ⚡ Start and initialize the bot.\n`
+    + `/api - 🔗 Add or manage your API connections.\n`
+    + `/footer - 📜 Set a custom footer message easily.\n`
+    + `/removefooter - 🚫 Remove the existing footer message.\n`
+    + `/dashboard - 📊 Access and view your detailed dashboard.\n`
+    + `/withdrawal - 💰 Request and manage your fund withdrawals.\n`
+    + `/ping - 📶 Check the current status of the bot.\n`
+    + `/help - 🛠️ Get assistance with using the bot.\n`
+    + `/contact - 📞 Reach out to the admin for support.`;
+
+  bot.sendMessage(chatId, helpMessage);
+});
+
+// Handle /contact command
+bot.onText(/\/contact/, (msg) => {
+  const chatId = msg.chat.id;
+  const contactMessage = `CONTACT HELP SUPPORT 24/7 - @indianshortner_in (Admin) ( @JIT362 bot repo)\n\n`
+    + `We always try to reply to your message as soon as possible. If you didn't get a reply within 1 hour, please try again! 😊`;
+
+  bot.sendMessage(chatId, contactMessage);
+});
+
+// Handle /footer command
+bot.onText(/\/footer (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const footerText = match[1]; // Store footer text (Consider using a database for persistence)
+
+  bot.sendMessage(chatId, `✅ Your custom footer has been set:\n"${footerText}"`);
+});
+
+// Handle /removefooter command
+bot.onText(/\/removefooter/, (msg) => {
+  const chatId = msg.chat.id;
+
+  bot.sendMessage(chatId, `🚫 Your custom footer has been removed.`);
+});
+
+
+
+
 // Command: /setapi
 bot.onText(/\/setapi (.+)/, (msg, match) => {
   const chatId = msg.chat.id;
